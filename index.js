@@ -30,6 +30,13 @@ app.get("/", (req, res) => {
   res.send("Hey this is my API running 🥳");
 });
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
+
 app.get("/create", async (req, res) => {
   console.log("i am here");
   try {
